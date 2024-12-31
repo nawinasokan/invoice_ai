@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MNW</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../vendors/feather/feather.css">
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
+    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../images/logo/m-favicon.png" />
+    <style>
+        .profile-img {
+            width: 40px;
+            /* Adjust the width as needed */
+            height: auto;
+            /* To maintain aspect ratio */
+        }
+
+        #datahidden {
+            display: none;
+        }
+
+        .sidebar {
+
+            width: 300px;
+
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var usernameid = sessionStorage.getItem('usernameid');
+
+
+            var userId = localStorage.getItem('id');
+            var username = localStorage.getItem('username');
+            var role = localStorage.getItem('role');
+
+            console.log(username, "userrrrrrrr")
+            if (!username) {
+                window.location.href = '../../index.html';
+            } else {
+                $('#usernamedash').text(username);
+            }
+        });
+    </script>
+    <!-- <script>
+        $(document).ready(function () {
+            // Get user ID from session storage and display it
+            var usernameid = sessionStorage.getItem('usernameid');
+            console.log(usernameid);
+            $('#usernamedash').text(usernameid);
+        });
+    </script> -->
+
+    <!-- <script>
+    $(document).ready(function () {
+      var usernameid = sessionStorage.getItem('usernameid');
+      
+      if (!usernameid) {
+        window.location.href = 'https://mpulse.plus/dashboard';
+      } else {
+        $('#usernamedash').text(usernameid);
+      }
+    });
+  </script> -->
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <!-- <div id="navbarPlaceholder"></div> -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo mr-5" href="team_leader_dashboard.html"><img
+                        src="../../images/logo/jaalogo.png" class="mr-2" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="team_leader_dashboard.html"><img
+                        src="../../images/logo/m-favicon.png" alt="logo" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <!-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="icon-menu"></span>
+                </button> -->
+
+                <ul class="navbar-nav navbar-nav-right">
+                    <div class="brand-logo">
+                        <img src="../../images/logo/mnwlogo..jpeg" alt="logo" height="60px" width="150px">
+                    </div>
+                    <!-- <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                            <img src="../../images/logo/m-favicon.png" alt="profile" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                            aria-labelledby="profileDropdown">
+                            <a class="dropdown-item">
+                                <i class="ti-settings text-primary"></i>
+                                User Name
+                            </a>
+                            <a class="dropdown-item" href="https://mpulse.plus/logout">
+
+                                <i class="ti-power-off text-primary"></i>
+                                Logout
+
+                            </a>
+                        </div>
+                    </li> -->
+                    <!-- <li class="nav-item nav-settings d-none d-lg-flex">
+                        <a class="nav-link" href="#">
+                            <i class="icon-ellipsis"></i>
+                        </a>
+                    </li> -->
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid page-body-wrapper">
+
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="team_leader_dashboard.html">
+                            <i class="icon-grid menu-icon"></i>
+                            <!-- <i class="bi bi-person-video3 menu-icon"></i> -->
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team_leader.html">
+                            <!-- <i class="icon-grid menu-icon"></i> -->
+                            <i class="bi bi-person-video3 menu-icon"></i>
+                            <span class="menu-title">Team Leader</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="user_credential_addpage.html">
+                            <!-- <i class="icon-grid menu-icon"></i> -->
+                            <i class="bi bi-person-plus menu-icon"></i>
+                            <span class="menu-title">Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#system_parameter" aria-expanded="false"
+                            aria-controls="system_parameter">
+                            <i class="bi bi-building-add menu-icon"></i>
+                            <span class="menu-title">System Parameter</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="system_parameter">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Entity_add_page.html">Entity</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="nature_of_work.html">Nature of Work</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="scope_add_page.html">Scope</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="subscope_val_add_page.html">Subscope</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#login_check" aria-expanded="false"
+                            aria-controls="login_check">
+                            <i class="bi bi-building-add menu-icon"></i>
+                            <span class="menu-title">Login Check</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="login_check">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="login_check_table.html">Login Check</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#invoice" aria-expanded="false"
+                            aria-controls="invoice">
+                            <i class="bi bi-upload menu-icon"></i>
+                            <span class="menu-title">Invoice Upload</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="invoice">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="invoice.html">Invoice Upload</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false"
+                            aria-controls="report">
+                            <i class="bi bi-file-text menu-icon"></i>
+                            <span class="menu-title">Report</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="report">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="user_daywise_report.html">User Day wise part 1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="user_daywise_report_part2.html">User Day wise part 2</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="entity_daywise_report.html">Entity day wise</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Entity_Completed_Status_Utilization_report.html">Entity
+                                        Completed wise</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Entity_Inprogress_Status_Utilization.html">Entity
+                                        Inprogress</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Entity_hold.html">Entity Hold</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="entity_daywise_total_time_taken.html">Entity wise Total
+                                        Time Taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="entity_cum_nature_of_work_wise_total_time_taken.html">Entity cum Nature of
+                                        work <br> wise Total time taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="scopewise_time_taken.html">Scope wise Time Taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="scope_cum_nature_of_work_wise_time_taken.html">Scope cum
+                                        Sub Scope time taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Form wise Time Taken.html">Subscope wise Time Taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Form cum Entity wise Time Taken.html">Subscope cum Nature
+                                        <br> of work time taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="Entity wise Estimated time Vs Total Time taken.html">Entity wise Estimated
+                                        time <br> Vs Total Time taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="Entity cum service ID wise Estimated time Vs Total Time taken.html">Entity
+                                        cum service <br> ID wise Estimated time Vs <br> Total Time taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Team member wise Total Time Taken.html">Team member wise
+                                        Total <br> Time Taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Team member cum Entity wise Total Time taken.html">Team
+                                        member cum Entity <br> wise Total Time taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="Team member cum Nature of work wise Total Time Taken.html">Team member cum
+                                        Nature <br> of work wise Total <br> Time Taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <!-- <a class="nav-link" href="Team member cum Nature of work wise Estimated Time Vs Total Time Taken.html">Team member cum Nature of work wise Estimated Time Vs Total Time Taken</a>
+                                      -->
+                                    <a class="nav-link"
+                                        href="Team member cum Nature of work wise Estimated Time Vs Total Time Taken.html">
+                                        Team member cum Nature <br>
+                                        of work wise<br>
+                                        Estimated Time Vs <br>
+                                        Total Time Taken</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="Team member cum Nature of work wise Estimated Time Vs Chargeable Hrs.html">Team
+                                        member cum Nature <br> of work wise Estimated <br> Time Vs Chargeable Hrs</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="Team member cum Nature of Work with No.of.Entity.html">Team member cum
+                                        Nature <br> of Work with No.of.Entity</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="Entity wise Estimated Vs Actual Date of delivery.html">Entity wise
+                                        Estimated Vs Actual Date of delivery</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Entity wise No.of.Days Taken.html">Entity wise No.of.Days
+                                        Taken</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3 class="text-primary">Invoice Upload</h3>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+                                                id="profileDropdown">
+                                                <img src="../../images/logo/m-favicon.png" alt="profile"
+                                                    class="profile-img">
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right"
+                                                aria-labelledby="profileDropdown">
+                                                <a class="dropdown-item">
+                                                    <i class="bi bi-person-fill"></i>
+                                                    <span id="usernamedash"> User Name </span>
+                                                </a>
+                                                <a class="dropdown-item" id="logout-link">
+                                                    <i class="bi bi-box-arrow-right"></i>
+                                                    Logout
+                                                </a>
+
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        $('#logout-link').click(function (event) {
+                                                            event.preventDefault(); // Prevents immediate navigation to the logout page
+
+                                                            var url = baseurl + '/logouttime';
+                                                            var now = new Date();
+
+                                                            // Extract date components
+                                                            var year = now.getFullYear();
+                                                            var month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+                                                            var day = String(now.getDate()).padStart(2, '0');
+
+                                                            // Extract time components in 24-hour format
+                                                            var hours = String(now.getHours()).padStart(2, '0');
+                                                            var minutes = String(now.getMinutes()).padStart(2, '0');
+                                                            var seconds = String(now.getSeconds()).padStart(2, '0');
+
+                                                            // Format the date and time as YYYY-MM-DD HH:MM:SS
+                                                            var formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+                                                            // Get the user ID from localStorage
+                                                            var userId = localStorage.getItem('id');
+                                                            console.log(userId, "lllllllllllllllllllll")
+
+                                                            // Create FormData to send in the AJAX request
+                                                            var formData = new FormData();
+                                                            formData.append('logouttime', formattedDateTime);
+                                                            formData.append('userid', parseInt(userId));
+
+
+                                                            // Send the AJAX request
+                                                            $.ajax({
+                                                                url: url,
+                                                                type: 'POST',
+                                                                processData: false,
+                                                                contentType: false,
+                                                                data: formData,
+                                                                success: function (response) {
+                                                                    console.log(response);
+                                                                    sessionStorage.clear();
+                                                                    localStorage.clear();
+                                                                    // Redirect to the logout page after the AJAX request is successful
+                                                                    location.href = "https://mpulse.plus/logout";
+                                                                    // location.href = "../../index.html"
+                                                                },
+                                                                error: function (xhr, status, error) {
+                                                                    console.error('Error:', error);
+                                                                    // Handle the error if needed
+                                                                }
+                                                            });
+                                                        });
+                                                    });
+                                                </script>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="pageLoader" class="d-none"
+                                    style="position: fixed; top: 50%; left: 55%; transform: translate(-50%, -50%); z-index: 1050;">
+                                    <div class="spinner-border text-primary" role="status">
+
+                                    </div>
+                                    <br>
+                                    <!-- <span class="visually-hidden">Loading...</span> -->
+                                </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4">
+                                            <input 
+                                                type="file" 
+                                                class="form-control" 
+                                                name="bulkupload" 
+                                                id="bulkupload"
+                                                accept=".jpg,.jpeg,.png,.pdf,.jfif,.csv,.xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
+                                        </div>
+                                        <div class="col-sm-12 col-md-1">
+                                            <button class="btn btn-primary btn-sm mt-2"
+                                                onclick="uploadExcel()">Upload</button>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 d-flex justify-content-end">
+                                            <button class="btn btn-info btn-sm mt-2" id="downloadBtn"
+                                                style="display: none;">Download Invoice Data</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', (event) => {
+                                const today = new Date().toISOString().split('T')[0];
+                                document.getElementById('from_date').value = today;
+                            });
+                        </script>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', (event) => {
+                                const today = new Date().toISOString().split('T')[0];
+                                document.getElementById('to_date').value = today;
+                            });
+                        </script>
+                    </div>
+                    <br>
+
+                    <br>
+                    <div class="card" id="datahidden" style="display: none;">
+                        <div class="card-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered"
+                                            style="table-layout: auto; width: 100%; text-align: center;" id="my_table1">
+                                            <thead style="text-align: center;">
+                                                <tr>
+                                                    <th>S.no</th>
+                                                    <th>Company Name</th>
+                                                    <th class="text-info">GSTIN</th>
+                                                    <th class="text-success">Address</th>
+                                                    <th class="text-secondary">Invoice No</th>
+                                                    <th>Invoice Date</th>
+                                                    <th>Supplier State Code</th>
+                                                    <th class="text-info">Buyer State</th>
+                                                    <th class="text-success">Buyer GST</th>
+                                                    <th class="text-secondary">Taxable Value</th>
+                                                    <th class="text-warning">Rate</th>
+                                                    <th class="text-info">CGST</th>
+                                                    <th class="text-success">SGST</th>
+                                                    <th class="text-warning">IGST</th>
+                                                    <th class="text-info">Discount</th>
+                                                    <th class="text-primary">Invoice Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="newtable"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- <div class="d-flex justify-content-end mt-3">
+                                    <button id="download-btn" class="btn btn-primary">Download CSV</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+
+    <style>
+        select[name="my_table1_length"] {
+            height: 30px;
+        }
+
+        .paginate_button {
+            font-size: 12px;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+
+            font-size: .900rem !important;
+
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+    <script src="../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="../../vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="../../js/dataTables.select.min.js"></script>
+    <link rel="stylesheet" href="../../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <!-- <script src="../../vendors/select2/select2.min.js"></script> -->
+    <!-- <script src="../../js/off-canvas.js"></script> -->
+    <script src="../../js/hoverable-collapse.js"></script>
+    <script src="../../js/template.js"></script>
+    <script src="../../js/settings.js"></script>
+    <script src="../../js/todolist.js"></script>
+    <script src="../../js/select2.js"></script>
+</body>
+<script src="../../js/url.js"></script>
+
+
+
+
+
+
+
+
+<!-- <script>
+    function uploadExcel() {
+        const fileInput = document.getElementById("bulkupload");
+        const file = fileInput.files[0];
+        const url = baseurl + '/upload-invoice'; // Ensure baseurl is defined globally
+
+        if (!file) {
+            Swal.fire("Error", "Please select a file.", "error");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $('#pageLoader').removeClass('d-none'); // Show loader
+            },
+            success: function (data) {
+                if (data.extracted_data) {
+                    const invalidUrls = [];
+                    const validData = [];
+
+                    // Loop through the extracted data
+                    data.extracted_data.forEach((item) => {
+                        const fileUrl = Object.keys(item)[0];
+                        const rowData = item[fileUrl];
+
+                        if (!Array.isArray(rowData)) {
+                            // Handle non-array rowData (e.g., log or skip)
+                            console.error("Invalid rowData:", rowData);
+                            invalidUrls.push(fileUrl);
+                        } else {
+                            rowData.forEach(row => validData.push({ rowData: row, fileUrl }));
+                        }
+                    });
+
+                    if (invalidUrls.length > 0) {
+                        alert(`The following URLs could not be processed:\n${invalidUrls.join("\n")}`);
+                    }
+
+                    if (validData.length > 0) {
+                        populateTable(validData);
+                        Swal.fire("Success", "File uploaded and data extracted!", "success");
+                    } else {
+                        Swal.fire("Error", "No valid data found in the file.", "error");
+                    }
+                } else {
+                    Swal.fire("Error", data.error || "Unknown error occurred.", "error");
+                }
+            },
+
+            complete: function () {
+                $('#pageLoader').addClass('d-none'); // Hide loader
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                Swal.fire("Error", "Failed to upload file: " + errorThrown, "error");
+            }
+        });
+    }
+
+    function populateTable(validData) {
+    const tableBody = document.getElementById("newtable");
+    tableBody.innerHTML = "";
+
+    validData.forEach(({ rowData, fileUrl }, index) => {
+        // Check if rowData exists and is not null
+        if (rowData) {
+            const rowDataHtml = `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${rowData?.Company_Name ?? '-'}</td>
+                    <td>${rowData?.GSTIN ?? '-'}</td>
+                    <td>${rowData?.Address ?? '-'}</td>
+                    <td>${rowData?.Invoice_No ?? '-'}</td>
+                    <td>${rowData?.Invoice_Date ?? '-'}</td>
+                    <td>${rowData?.Supplier_State_Code ?? '-'}</td>
+                    <td>${rowData?.Buyer_State ?? '-'}</td>
+                    <td>${rowData?.Buyer_GST ?? '-'}</td>
+                    <td>${rowData?.Taxable_Value ?? '-'}</td>
+                    <td>${rowData?.Rate ?? '-'}</td>
+                    <td>${rowData?.CGST ?? '-'}</td>
+                    <td>${rowData?.SGST ?? '-'}</td>
+                    <td>${rowData?.IGST ?? '-'}</td>
+                    <td>${rowData?.Discount ?? '-'}</td>
+                    <td>${rowData?.Total_Amount ?? '-'}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += rowDataHtml;
+        }
+    });
+
+    document.getElementById("datahidden").style.display = "block";
+    document.getElementById('downloadBtn').style.display = 'block';
+
+    if (!$.fn.DataTable.isDataTable('#my_table1')) {
+        $('#my_table1').DataTable({
+            "pageLength": 20,
+            "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+        });
+    }
+}
+
+</script> -->
+
+
+
+<script>
+    function uploadExcel() {
+        const fileInput = document.getElementById("bulkupload");
+        const file = fileInput.files[0];
+        const url = baseurl + '/extract-invoice';
+
+        if (!file) {
+            Swal.fire("Error", "Please select a file.", "error");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $('#pageLoader').removeClass('d-none');
+            },
+            success: function (response) {
+                if (response.extracted_data && Array.isArray(response.extracted_data)) {
+                    populateTable(response.extracted_data);
+                    Swal.fire("Success", "File uploaded and data extracted!", "success");
+                } else {
+                    Swal.fire("Error", "Invalid data format received.", "error");
+                }
+            },
+            complete: function () {
+                $('#pageLoader').addClass('d-none');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                Swal.fire("Error", "Failed to upload file: " + errorThrown, "error");
+            }
+        });
+    }
+
+    function populateTable(extractedData) {
+        const tableBody = document.getElementById("newtable");
+        tableBody.innerHTML = "";
+
+        // Filter out the skipped links (based on the status)
+        const filteredData = extractedData.filter(rowData => rowData.status !== "skipped");
+
+        filteredData.forEach((rowData, index) => {
+            const rowHtml = `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${rowData["Supplier Company Name"] || '-'}</td>
+                    <td>${rowData["Supplier GSTIN"] || '-'}</td>
+                    <td>${rowData["Address"] || '-'}</td>
+                    <td>${rowData["Invoice No"] || '-'}</td>
+                    <td>${rowData["Invoice Date"] || '-'}</td>
+                    <td>${rowData["Supplier State Code"] || '-'}</td>
+                    <td>${rowData["Buyer State"] || '-'}</td>
+                    <td>${rowData["Buyer GST"] || '-'}</td>
+                    <td>${rowData["Taxable Value"] || '-'}</td>
+                    <td>${Array.isArray(rowData["Rate"]) ? rowData["Rate"].join(", ") : rowData["Rate"] || '-'}</td>
+                    <td>${rowData["CGST"] || '-'}</td>
+                    <td>${rowData["SGST"] || '-'}</td>
+                    <td>${rowData["IGST"] || '-'}</td>
+                    <td>${rowData["Discount"] === '-' || rowData["Discount"] === "null" ? '-' : rowData["Discount"]}</td>
+                    <td>${rowData["Total Amount"] || '-'}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += rowHtml;
+        });
+
+        document.getElementById("datahidden").style.display = "block";
+        document.getElementById('downloadBtn').style.display = 'block';
+
+        // Initialize or reinitialize DataTable
+        if ($.fn.DataTable.isDataTable('#my_table1')) {
+            $('#my_table1').DataTable().destroy();
+        }
+        
+        $('#my_table1').DataTable({
+            "pageLength": -1,
+            "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+        });
+    }
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+
+
+<script>
+    document.getElementById('downloadBtn').addEventListener('click', function () {
+        var table = document.getElementById('my_table1');
+
+        var wb = XLSX.utils.table_to_book(table, { sheet: "Invoice Data" });
+
+        var ws = wb.Sheets["Invoice Data"];
+
+        // Apply bold formatting to headers
+        var range = XLSX.utils.decode_range(ws['!ref']);
+        for (var C = range.s.c; C <= range.e.c; ++C) {
+            var cellAddress = XLSX.utils.encode_cell({ r: 0, c: C });
+            if (ws[cellAddress]) {
+                ws[cellAddress].s = {
+                    font: { bold: true }
+                };
+            }
+        }
+
+        // Generate file name with current date and time
+        const fileName = `Invoice_Data_GRN${getCurrentDateTime()}.xlsx`;
+        console.log("Generated file name:", fileName);
+
+        // Save the file
+        XLSX.writeFile(wb, fileName);
+    });
+
+    function getCurrentDateTime() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = (today.getMonth() + 1).toString().padStart(2, '0');
+        const day = today.getDate().toString().padStart(2, '0');
+        const hours = today.getHours().toString().padStart(2, '0');
+        const minutes = today.getMinutes().toString().padStart(2, '0');
+        const seconds = today.getSeconds().toString().padStart(2, '0');
+
+        const timestamp = `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
+        console.log("Timestamp generated:", timestamp);
+        return timestamp;
+    }
+</script>
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+</html>
